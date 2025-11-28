@@ -143,6 +143,7 @@ const AddComplaint = ({ navigation }) => {
         maxHeight: 1024,
       });
 
+        
       if (!result.canceled && result.assets) {
         const newImage = result.assets[0].uri;
         setImages([...images, newImage].slice(0, 5)); // Max 5 images
