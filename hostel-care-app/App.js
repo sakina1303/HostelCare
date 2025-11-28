@@ -1,30 +1,39 @@
-import { View, Text, StyleSheet } from 'react-native';
-import { StatusBar } from 'expo-status-bar';
+import 'react-native-gesture-handler'; // Required for React Navigation
+import React from 'react';
+import { Provider as PaperProvider, DefaultTheme } from 'react-native-paper';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-export default function App() {
+import AppNavigator from './src/navigation';
+import colors from './src/utils/colors';
+
+// Define a custom theme based on the app's color scheme
+const theme = {
+  ...DefaultTheme,
+  roundness: 6,
+  colors: {
+    ...DefaultTheme.colors,
+    primary: colors.PRIMARY,
+    accent: colors.SECONDARY,
+    background: colors.BACKGROUND_GREY,
+    surface: colors.WHITE,
+    text: colors.TEXT_DARK,
+    error: colors.URGENT,
+  },
+};
+
+/**
+ * Main application component.
+ * It wraps the application with necessary context providers (PaperProvider, SafeAreaProvider)
+ * and renders the main navigation stack.
+ */
+const App = () => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>HostelCare App</Text>
-      <Text style={styles.subtext}>Ready for development!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaProvider>
+      <PaperProvider theme={theme}>
+        <AppNavigator />
+      </PaperProvider>
+    </SafeAreaProvider>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  text: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 8,
-  },
-  subtext: {
-    fontSize: 16,
-    color: '#666',
-  },
-});
+export default App;
