@@ -66,7 +66,7 @@ const WardenHomeScreen = ({ navigation }) => {
 
         <TouchableOpacity
           style={styles.viewAllButton}
-          onPress={() => navigation.navigate('AllComplaints')}
+          onPress={() => navigation.navigate('AllComplaintsNav')}
           activeOpacity={0.8}
         >
           <View style={styles.viewAllContent}>
@@ -80,7 +80,7 @@ const WardenHomeScreen = ({ navigation }) => {
           
           <TouchableOpacity
             style={styles.actionCard}
-            onPress={() => navigation.navigate('Insights')}
+            onPress={() => navigation.navigate('InsightsNav')}
             activeOpacity={0.7}
           >
             <View style={styles.actionCardContent}>

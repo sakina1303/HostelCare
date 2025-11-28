@@ -16,9 +16,21 @@ const Stack = createStackNavigator();
 const HomeStack = () => (
   <Stack.Navigator screenOptions={{ headerShown: false }}>
     <Stack.Screen name="WardenHome" component={WardenHomeScreen} />
-    <Stack.Screen name="AllComplaints" component={AllComplaintsScreen} />
     <Stack.Screen name="WardenComplaintDetail" component={WardenComplaintDetailScreen} />
-    <Stack.Screen name="Insights" component={InsightsScreen} />
+  </Stack.Navigator>
+);
+
+const AllComplaintsStack = () => (
+  <Stack.Navigator screenOptions={{ headerShown: false }}>
+    <Stack.Screen name="AllComplaintsTab" component={AllComplaintsScreen} />
+    <Stack.Screen name="WardenComplaintDetail" component={WardenComplaintDetailScreen} />
+  </Stack.Navigator>
+);
+
+const InsightsStack = () => (
+  <Stack.Navigator screenOptions={{ headerShown: false }}>
+    <Stack.Screen name="InsightsTab" component={InsightsScreen} />
+    <Stack.Screen name="WardenComplaintDetail" component={WardenComplaintDetailScreen} />
   </Stack.Navigator>
 );
 
@@ -33,13 +45,17 @@ const WardenTabs = () => {
           backgroundColor: colors.white,
           borderTopWidth: 1,
           borderTopColor: colors.border,
-          height: 60,
-          paddingBottom: 8,
+          height: 70,
+          paddingBottom: 10,
           paddingTop: 8,
         },
         tabBarLabelStyle: {
-          fontSize: 12,
+          fontSize: 11,
           fontWeight: '600',
+          marginTop: 4,
+        },
+        tabBarIconStyle: {
+          marginBottom: 4,
         },
       }}
     >
@@ -49,6 +65,24 @@ const WardenTabs = () => {
         options={{
           tabBarIcon: ({ color }) => <Text style={{ fontSize: 24 }}>🏠</Text>,
           tabBarLabel: 'Dashboard',
+        }}
+      />
+
+      <Tab.Screen
+        name="AllComplaintsNav"
+        component={AllComplaintsStack}
+        options={{
+          tabBarIcon: ({ color }) => <Text style={{ fontSize: 24 }}>☰</Text>,
+          tabBarLabel: 'All Complaints',
+        }}
+      />
+
+      <Tab.Screen
+        name="InsightsNav"
+        component={InsightsStack}
+        options={{
+          tabBarIcon: ({ color }) => <Text style={{ fontSize: 24 }}>📊</Text>,
+          tabBarLabel: 'Analytics',
         }}
       />
     </Tab.Navigator>
